@@ -10,6 +10,7 @@ import Mood from "./pages/Mood";
 import Finance from "./pages/Finance";
 import Health from "./pages/Health";
 import Ares from "./pages/Ares";
+import Calendar from "./pages/Calendar";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/planner" element={<Planner />} />
           <Route path="/habits" element={<Habits />} />
+          <Route path="/calendar" element={<Calendar />} />
           <Route path="/mood" element={<Mood />} />
           <Route path="/finance" element={<Finance />} />
           <Route path="/health" element={<Health />} />

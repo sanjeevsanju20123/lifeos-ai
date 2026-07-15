@@ -24,6 +24,8 @@ function Sidebar() {
           <FaHome /> Dashboard
         </NavLink>
 
+        <NavLink to="/calendar">Calendar</NavLink>
+        
         <NavLink to="/planner">
           <FaCalendarAlt /> Planner
         </NavLink>
