@@ -33,6 +33,15 @@ function Calendar() {
   };
 
   const today = new Date();
+  const selectedTasks = tasks.filter((task) => {
+  if (!selectedDay) return false;
+
+  const selectedDate = `${year}-${String(
+    currentDate.getMonth() + 1
+  ).padStart(2, "0")}-${String(selectedDay).padStart(2, "0")}`;
+
+  return task.dueDate === selectedDate;
+});
 
   return (
     <>
@@ -102,9 +111,24 @@ const hasTasks = tasks.some(
         {selectedDay && (
   <div className="selected-date">
     <h3>📅 Selected Date</h3>
+
     <p>
       {selectedDay} {month} {year}
     </p>
+
+    <h4>Tasks:</h4>
+
+    {selectedTasks.length === 0 ? (
+      <p>No tasks for this day.</p>
+    ) : (
+      <ul>
+        {selectedTasks.map((task) => (
+          <li key={task.id}>
+            {task.completed ? "✅" : "⬜"} {task.text}
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 )}
       </div>
