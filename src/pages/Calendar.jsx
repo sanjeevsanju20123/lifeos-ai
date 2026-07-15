@@ -5,6 +5,8 @@ import "../styles/Calendar.css";
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
+  const [selectedDay, setSelectedDay] = useState(null);
+
   const month = currentDate.toLocaleString("default", { month: "long" });
   const year = currentDate.getFullYear();
 
@@ -60,16 +62,29 @@ function Calendar() {
               currentDate.getMonth() === today.getMonth() &&
               year === today.getFullYear();
 
+            const isSelected = selectedDay === day;
+
             return (
               <div
-                key={day}
-                className={`calendar-day ${isToday ? "today" : ""}`}
-              >
-                {day}
-              </div>
+               key={day}
+               onClick={() => setSelectedDay(day)}
+              className={`calendar-day ${isToday ? "today" : ""} ${
+               isSelected ? "selected" : ""
+               }`}
+                >
+               {day}
+            </div>
             );
           })}
         </div>
+        {selectedDay && (
+  <div className="selected-date">
+    <h3>📅 Selected Date</h3>
+    <p>
+      {selectedDay} {month} {year}
+    </p>
+  </div>
+)}
       </div>
     </>
   );
