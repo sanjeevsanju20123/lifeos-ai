@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import "../styles/Calendar.css";
 
@@ -6,6 +6,16 @@ function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   const [selectedDay, setSelectedDay] = useState(null);
+
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+  const savedTasks = localStorage.getItem("tasks");
+
+  if (savedTasks) {
+    setTasks(JSON.parse(savedTasks));
+  }
+}, []);
 
   const month = currentDate.toLocaleString("default", { month: "long" });
   const year = currentDate.getFullYear();
@@ -57,6 +67,14 @@ function Calendar() {
           {Array.from({ length: daysInMonth }).map((_, index) => {
             const day = index + 1;
 
+            const dateString = `${year}-${String(
+  currentDate.getMonth() + 1
+).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+
+const hasTasks = tasks.some(
+  (task) => task.dueDate === dateString
+);
+
             const isToday =
               day === today.getDate() &&
               currentDate.getMonth() === today.getMonth() &&
@@ -73,6 +91,10 @@ function Calendar() {
                }`}
                 >
                {day}
+
+{hasTasks && (
+  <span className="task-dot"></span>
+)}
             </div>
             );
           })}

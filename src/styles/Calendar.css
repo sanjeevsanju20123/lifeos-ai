@@ -90,3 +90,16 @@
 .selected-date p {
   font-size: 18px;
 }
+
+.calendar-day {
+  position: relative;
+}
+
+.task-dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 12px;
+}
