@@ -10,6 +10,7 @@ import {
   FaUsers,
   FaCog,
   FaRobot,
+  FaBell,
 } from "react-icons/fa";
 
 import "../styles/Sidebar.css";
@@ -48,6 +49,10 @@ function Sidebar() {
 
         <NavLink to="/team">
           <FaUsers /> Team
+        </NavLink>
+
+        <NavLink to="/notifications">
+          <FaBell /> Notifications
         </NavLink>
 
         <NavLink to="/ares">

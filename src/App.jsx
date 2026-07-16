@@ -11,6 +11,7 @@ import Finance from "./pages/Finance";
 import Health from "./pages/Health";
 import Ares from "./pages/Ares";
 import Calendar from "./pages/Calendar";
+import Notifications from "./pages/Notifications";
 
 function App() {
   return (
@@ -27,6 +28,8 @@ function App() {
           <Route path="/finance" element={<Finance />} />
           <Route path="/health" element={<Health />} />
           <Route path="/ares" element={<Ares />} />
+          <Route path="/notifications" element={<Notifications />}
+          />
         </Routes>
       </div>
     </div>
