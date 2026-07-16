@@ -1,24 +1,37 @@
 import { motion } from "framer-motion";
-import { FaTasks } from "react-icons/fa";
 import "../styles/Header.css";
 
 function Header() {
+  const hour = new Date().getHours();
+
+  let greeting = "Good Evening";
+  let emoji = "🌙";
+
+  if (hour < 12) {
+    greeting = "Good Morning";
+    emoji = "☀️";
+  } else if (hour < 18) {
+    greeting = "Good Afternoon";
+    emoji = "🌤";
+  }
+
+  const today = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
-    <motion.header
-      className="header"
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-    >
-      <div className="header-left">
+    <div className="header">
+      <div>
         <h1>
-          <FaTasks className="header-icon" />
-          LifeOS Planner
+          {emoji} {greeting}, Sanjeev
         </h1>
 
-        <p>Your Personal Productivity Dashboard</p>
+        <p>{today}</p>
       </div>
-    </motion.header>
+    </div>
   );
 }
 

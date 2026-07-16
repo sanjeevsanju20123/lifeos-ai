@@ -1,0 +1,29 @@
+:root {
+  /* Background */
+  --bg-primary: #020617;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.75);
+
+  /* Brand */
+  --primary: #3b82f6;
+  --secondary: #8b5cf6;
+
+  /* Status */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+
+  /* Text */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+
+  /* Border */
+  --border: rgba(255, 255, 255, 0.08);
+
+  /* Effects */
+  --radius: 20px;
+  --shadow:
+    0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --transition: 0.3s ease;
+}
