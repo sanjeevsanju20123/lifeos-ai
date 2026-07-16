@@ -103,3 +103,29 @@
   position: absolute;
   bottom: 12px;
 }
+
+.task-indicator {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.task-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.task-dot.high {
+  background-color: red;
+}
+
+.task-dot.medium {
+  background-color: orange;
+}
+
+.task-dot.low {
+  background-color: green;
+}

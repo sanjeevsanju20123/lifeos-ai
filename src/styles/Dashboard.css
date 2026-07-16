@@ -44,3 +44,28 @@
 .card h2 {
   font-size: 32px;
 }
+
+.today-section {
+  margin-top: 30px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.today-section h2 {
+  margin-bottom: 15px;
+}
+
+.today-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.today-section li {
+  padding: 10px 0;
+  border-bottom: 1px solid #334155;
+}
+
+.today-section p {
+  margin-top: 15px;
+}

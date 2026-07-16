@@ -17,6 +17,17 @@ function Calendar() {
   }
 }, []);
 
+const toggleTask = (id) => {
+  const updatedTasks = tasks.map((task) =>
+    task.id === id
+      ? { ...task, completed: !task.completed }
+      : task
+  );
+
+  setTasks(updatedTasks);
+  localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+};
+
   const month = currentDate.toLocaleString("default", { month: "long" });
   const year = currentDate.getFullYear();
 
@@ -80,9 +91,10 @@ function Calendar() {
   currentDate.getMonth() + 1
 ).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
-const hasTasks = tasks.some(
+const dayTasks = tasks.filter(
   (task) => task.dueDate === dateString
 );
+console.log(dayTasks);
 
             const isToday =
               day === today.getDate() &&
@@ -101,8 +113,17 @@ const hasTasks = tasks.some(
                 >
                {day}
 
-{hasTasks && (
-  <span className="task-dot"></span>
+{dayTasks.length > 0 && (
+  <div className="task-indicator">
+
+    {dayTasks.map((task) => (
+      <span
+        key={task.id}
+        className={`task-dot ${task.priority.toLowerCase()}`}
+      ></span>
+    ))}
+
+  </div>
 )}
             </div>
             );
@@ -124,8 +145,14 @@ const hasTasks = tasks.some(
       <ul>
         {selectedTasks.map((task) => (
           <li key={task.id}>
-            {task.completed ? "✅" : "⬜"} {task.text}
-          </li>
+  <input
+    type="checkbox"
+    checked={task.completed}
+    onChange={() => toggleTask(task.id)}
+  />
+
+  {task.text}
+</li>
         ))}
       </ul>
     )}
